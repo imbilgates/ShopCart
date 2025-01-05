@@ -7,6 +7,12 @@
   <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js Logo" width="50" />
 </div>
 
+##SCREENSHOTS
+  <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="home" width="50" />
+  <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="create" width="50" />
+  <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="update" width="50" />
+
+
 This project is a **MERN Stack Application** that allows users to:
 
 - **Create** a product
