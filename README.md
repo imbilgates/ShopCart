@@ -7,10 +7,12 @@
   <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js Logo" width="50" />
 </div>
 
-##SCREENSHOTS
-  <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="home" width="50" />
-  <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="create" width="50" />
-  <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="update" width="50" />
+## SCREENSHOTS
+
+![Home](https://github.com/imbilgates/ShopCart/blob/main/shoping-cart-ss/home.png?raw=true)
+![Create](https://github.com/imbilgates/ShopCart/blob/main/shoping-cart-ss/create.png?raw=true)
+![Update](https://github.com/imbilgates/ShopCart/blob/main/shoping-cart-ss/update.png?raw=true)
+
 
 
 This project is a **MERN Stack Application** that allows users to:
