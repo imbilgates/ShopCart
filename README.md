@@ -2,7 +2,7 @@
 
 <div align="center">
   <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="MongoDB Logo" width="50" />
-  <img src="https://cdn.worldvectorlogo.com/logos/express-109.svg" alt="MongoDB Logo" width="50" />
+  <img src="[https://cdn.worldvectorlogo.com/logos/express-109.svg](https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg)" alt="express js" width="50" />
   <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React Logo" width="50" />
   <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js Logo" width="50" />
 </div>
