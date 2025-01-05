@@ -1,6 +1,11 @@
 # MERN Stack Product Management App
 
-![MERN Stack](https://miro.medium.com/max/1400/1*cPh7ujRIfcHAy4kW2ADGOw.png)
+<div align="center">
+  <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg" alt="MongoDB Logo" width="50" />
+  <img src="https://cdn.worldvectorlogo.com/logos/express-109.svg" alt="Express Logo" width="50" />
+  <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React Logo" width="50" />
+  <img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node.js Logo" width="50" />
+</div>
 
 This project is a **MERN Stack Application** that allows users to:
 
@@ -53,5 +58,4 @@ This project is a **MERN Stack Application** that allows users to:
    ```bash
    npm start
    ```
-
 
