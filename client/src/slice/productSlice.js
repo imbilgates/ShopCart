@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const productSlice = createSlice({
     name: 'products',
     initialState: {
@@ -88,7 +90,7 @@ export default productSlice.reducer;
 
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-    const res = await fetch('http://localhost:5000/api/products');
+    const res = await fetch(`${BASE_URL}/api/products`);
     const data = await res.json();
     return data.data;
 });
@@ -97,7 +99,7 @@ export const createProduct = createAsyncThunk('products/createProduct', async (n
     if (!newProduct.name || !newProduct.image || !newProduct.price) {
         return { success: false, message: "Please fill in all fields." };
     }
-    const res = await fetch('http://localhost:5000/api/products', {
+    const res = await fetch(`${BASE_URL}/api/products`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newProduct),
@@ -108,14 +110,14 @@ export const createProduct = createAsyncThunk('products/createProduct', async (n
 });
 
 export const deleteProduct = createAsyncThunk('products/deleteProduct', async (pid) => {
-    const res = await fetch(`http://localhost:5000/api/products/${pid}`, { method: 'DELETE' });
+    const res = await fetch(`${BASE_URL}/api/products/${pid}`, { method: 'DELETE' });
     const data = await res.json();
     if (!data.success) return { success: false, message: data.message };
     return { success: true, message: "Product deleted successfully", pid };
 });
 
 export const updateProduct = createAsyncThunk('products/updateProduct', async ({ pid, updatedProduct }) => {
-    const res = await fetch(`http://localhost:5000/api/products/${pid}`, {
+    const res = await fetch(`${BASE_URL}/api/products/${pid}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedProduct),
