@@ -4,13 +4,15 @@ import {
 	Container,
 	Heading,
 	Input,
+	Text,
+	Textarea,
 	useColorModeValue,
 	useToast,
 	VStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createProduct } from "../slice/productSlice";
+import { createProduct, createBulkProducts } from "../slice/productSlice";
 
 const CreatePage = () => {
 	const [newProduct, setNewProduct] = useState({
@@ -18,6 +20,7 @@ const CreatePage = () => {
 		price: "",
 		image: "",
 	});
+	const [bulkJSON, setBulkJSON] = useState("");
 	const [errors, setErrors] = useState({});
 	const toast = useToast();
 	const dispatch = useDispatch();
@@ -58,6 +61,32 @@ const CreatePage = () => {
 		}
 	};
 
+	const handleBulkUpload = async () => {
+		try {
+			const parsed = JSON.parse(bulkJSON);
+			if (!Array.isArray(parsed)) throw new Error("Bulk input must be an array");
+
+			const response = await dispatch(createBulkProducts(parsed)).unwrap();
+
+			toast({
+				title: "Bulk Upload",
+				description: "Products uploaded successfully",
+				status: "success",
+				isClosable: true,
+				position: "top-right",
+			});
+			setBulkJSON("");
+		} catch (err) {
+			toast({
+				title: "Bulk Upload Failed",
+				description: err.message || "Invalid JSON format",
+				status: "error",
+				isClosable: true,
+				position: "top-right",
+			});
+		}
+	};
+
 	return (
 		<Container maxW={"container.sm"}>
 			<VStack spacing={8}>
@@ -65,6 +94,7 @@ const CreatePage = () => {
 					Create New Product
 				</Heading>
 
+				{/* Single Product Upload */}
 				<Box
 					w={"full"}
 					bg={useColorModeValue("white", "gray.800")}
@@ -112,6 +142,30 @@ const CreatePage = () => {
 
 						<Button colorScheme="blue" onClick={handleAddProduct} w="full">
 							Add Product
+						</Button>
+					</VStack>
+				</Box>
+
+				{/* Bulk Product Upload */}
+				<Box
+					w={"full"}
+					bg={useColorModeValue("white", "gray.800")}
+					p={6}
+					rounded={"lg"}
+					shadow={"md"}
+				>
+					<VStack spacing={4}>
+						<Textarea
+							placeholder="Paste products JSON array here"
+							value={bulkJSON}
+							onChange={(e) => setBulkJSON(e.target.value)}
+							rows={8}
+							isInvalid={false}
+							errorBorderColor="red.300"
+						/>
+
+						<Button colorScheme="green" onClick={handleBulkUpload} w="full">
+							Add Bulk Products
 						</Button>
 					</VStack>
 				</Box>

@@ -17,7 +17,7 @@ const __dirname = path.dirname(__filename);
 
 app.use(
   cors({
-    origin: process.env.VITE_API_BASE_URL, 
+    origin: '*', 
   })
 );
 
