@@ -10,6 +10,30 @@ export const getProducts = async (req, res) => {
     }
 }
 
+export const createManyProducts = async (req, res) => {
+    const products = req.body;
+
+    if (!Array.isArray(products) || products.length === 0) {
+        return res.status(400).json({ success: false, message: "Please provide an array of products." });
+    }
+
+    const invalidProducts = products.filter(
+        (p) => !p.name || !p.price || !p.image
+    );
+
+    if (invalidProducts.length > 0) {
+        return res.status(400).json({ success: false, message: "One or more products are missing required fields." });
+    }
+
+    try {
+        const savedProducts = await Product.insertMany(products);
+        res.status(200).json({ success: true, data: savedProducts });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ success: false, message: "Failed to insert products." });
+    }
+};
+
 export const createProduct = async (req, res) => {
     const product = req.body;
 
