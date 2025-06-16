@@ -9,8 +9,10 @@ import {
   Button,
   Center,
   useColorMode,
+  Image,
 } from '@chakra-ui/react';
 import { removeItemFromCart, clearCart } from '../slice/cartSlice';
+import emptyCart from '../assets/shopping-cart.png' 
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -19,7 +21,6 @@ const Cart = () => {
 
   const { colorMode } = useColorMode();
 
-  // Colors adapt to light/dark mode
   const bgColor = { light: 'white', dark: 'gray.700' };
   const textColor = { light: 'gray.800', dark: 'whiteAlpha.900' };
   const borderColor = { light: 'gray.200', dark: 'gray.600' };
@@ -40,9 +41,10 @@ const Cart = () => {
         </Heading>
 
         {items.length === 0 ? (
-          <Text textAlign="center" color={textColor[colorMode]}>
-            Your cart is empty.
-          </Text>
+          <Center flexDirection="column" textAlign="center" gap={4}>
+            <Text>Your cart is empty.</Text>
+            <Image src={emptyCart} alt="Empty Cart" boxSize="200px" objectFit="contain" />
+          </Center>
         ) : (
           <Stack spacing={4}>
             {items.map((item) => (
@@ -62,7 +64,7 @@ const Cart = () => {
                     ml={4}
                     onClick={() => dispatch(removeItemFromCart(item._id))}
                   >
-                    Remove
+                    −
                   </Button>
                 </Flex>
               </Box>
@@ -77,11 +79,7 @@ const Cart = () => {
               </Text>
             </Flex>
 
-            <Button
-              colorScheme="red"
-              variant="outline"
-              onClick={() => dispatch(clearCart())}
-            >
+            <Button colorScheme="red" variant="outline" onClick={() => dispatch(clearCart())}>
               Clear Cart
             </Button>
           </Stack>
