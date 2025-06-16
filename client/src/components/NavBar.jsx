@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // import { PlusSquareIcon } from "@chakra-ui/icons";
 import { IoMoon } from "react-icons/io5";
 import { LuPlus, LuSun } from "react-icons/lu";
+import Cart from "./Cart";
 
 const NavBar = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -39,6 +40,7 @@ const NavBar = () => {
 					<Button onClick={toggleColorMode}>
 						{colorMode === "light" ? <IoMoon /> : <LuSun size='20' />}
 					</Button>
+					<Cart />
 				</HStack>
 			</Flex>
 		</Container>

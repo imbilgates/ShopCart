@@ -24,7 +24,8 @@ import {
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteProduct, updateProduct } from "../slice/productSlice";
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { addItemToCart, removeItemFromCart, clearCart } from "../slice/cartSlice";
+import { FaTrashAlt, FaEdit, FaPlus } from "react-icons/fa";
 
 const ProductCard = ({ product, isLoading }) => {
 	const [updatedProduct, setUpdatedProduct] = useState(product);
@@ -91,6 +92,7 @@ const ProductCard = ({ product, isLoading }) => {
 			transition="all 0.3s"
 			_hover={{ transform: "translateY(-5px)", shadow: "xl" }}
 			bg={bg}
+			role="group"
 		>
 			{isLoading ? (
 				<Skeleton height="200px" />
@@ -114,7 +116,17 @@ const ProductCard = ({ product, isLoading }) => {
 							${product.price}
 						</Text>
 
-						<HStack spacing={2}>
+						<HStack
+							spacing={2}
+							opacity={0}
+							_groupHover={{ opacity: 1 }}
+							transition="opacity 0.2s"
+						>
+							<IconButton
+								icon={<FaPlus />}
+								onClick={() => dispatch(addItemToCart(product))}
+								colorScheme="green"
+							/>
 							<IconButton icon={<FaEdit />} onClick={onOpen} colorScheme="blue" />
 							<IconButton
 								icon={<FaTrashAlt />}
@@ -128,7 +140,6 @@ const ProductCard = ({ product, isLoading }) => {
 
 			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
-
 				<ModalContent>
 					<ModalHeader>Update Product</ModalHeader>
 					<ModalCloseButton />
