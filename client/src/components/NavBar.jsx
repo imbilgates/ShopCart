@@ -1,13 +1,18 @@
-import { Button, Container, Flex, HStack, Text, useColorMode } from "@chakra-ui/react";
+import { Button, Container, Flex, HStack, IconButton, Text, useColorMode } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 // import { PlusSquareIcon } from "@chakra-ui/icons";
 import { IoMoon } from "react-icons/io5";
 import { LuPlus, LuSun } from "react-icons/lu";
 import Cart from "./Cart";
+import { FaCartPlus } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import CartButton from "./UI/CartButton";
 
 const NavBar = () => {
 	const { colorMode, toggleColorMode } = useColorMode();
+	const items = useSelector((state) => state.cart.items);
+
 
 	return (
 		<Container maxW={"1140px"} px={4}>
@@ -40,7 +45,8 @@ const NavBar = () => {
 					<Button onClick={toggleColorMode}>
 						{colorMode === "light" ? <IoMoon /> : <LuSun size='20' />}
 					</Button>
-					<Cart />
+
+					<CartButton />
 				</HStack>
 			</Flex>
 		</Container>

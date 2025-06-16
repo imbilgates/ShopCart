@@ -24,7 +24,7 @@ import {
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteProduct, updateProduct } from "../slice/productSlice";
-import { addItemToCart, removeItemFromCart, clearCart } from "../slice/cartSlice";
+import { addItemToCart } from "../slice/cartSlice";
 import { FaTrashAlt, FaEdit, FaPlus } from "react-icons/fa";
 
 const ProductCard = ({ product, isLoading }) => {
