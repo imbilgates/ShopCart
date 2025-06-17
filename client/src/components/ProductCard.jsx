@@ -1,6 +1,7 @@
 import {
 	Box,
 	Button,
+	Flex,
 	Heading,
 	HStack,
 	IconButton,
@@ -108,32 +109,45 @@ const ProductCard = ({ product, isLoading }) => {
 					</>
 				) : (
 					<>
-						<Heading as="h3" size="md" mb={2}>
-							{product.name}
-						</Heading>
+						<Flex align="center" justify="space-between" mb={3}>
+							<Heading as="h3" size="md" mb={2}>
+								{product.name}
+							</Heading>
 
-						<Text fontWeight="bold" fontSize="xl" color={textColor} mb={4}>
-							${product.price}
-						</Text>
+							<Text fontWeight="bold" fontSize="xl" color={textColor} mb={4}>
+								₹{product.price}
+							</Text>
+						</Flex>
 
-						<HStack
-							spacing={2}
-							opacity={0}
-							_groupHover={{ opacity: 1 }}
-							transition="opacity 0.2s"
-						>
-							<IconButton
-								icon={<FaPlus />}
+
+						<Flex align="center" justify="space-between" mb={3}>
+							<Button
+								leftIcon={<FaPlus />}
+								colorScheme="teal"
+								variant="solid"
+								size="sm"
 								onClick={() => dispatch(addItemToCart(product))}
-								colorScheme="green"
-							/>
-							<IconButton icon={<FaEdit />} onClick={onOpen} colorScheme="blue" />
-							<IconButton
-								icon={<FaTrashAlt />}
-								onClick={() => handleDeleteProduct(product._id)}
-								colorScheme="red"
-							/>
-						</HStack>
+								_hover={{ bg: "teal.500", transform: "scale(1.05)" }}
+							>
+								Add to Cart
+							</Button>
+
+							<HStack
+								spacing={2}
+								opacity={0}
+								_groupHover={{ opacity: 1 }}
+								transition="opacity 0.2s"
+							>
+								<IconButton icon={<FaEdit />} onClick={onOpen} colorScheme="blue" size="sm" />
+								<IconButton
+									icon={<FaTrashAlt />}
+									onClick={() => handleDeleteProduct(product._id)}
+									colorScheme="red"
+									size="sm"
+								/>
+							</HStack>
+						</Flex>
+
 					</>
 				)}
 			</Box>

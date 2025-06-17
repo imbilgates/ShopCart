@@ -11,7 +11,7 @@ import {
   useColorMode,
   Image,
 } from '@chakra-ui/react';
-import { removeItemFromCart, clearCart } from '../slice/cartSlice';
+import { addItemFromCart, removeItemFromCart, clearCart } from '../slice/cartSlice';
 import emptyCart from '../assets/shopping-cart.png' 
 
 const Cart = () => {
@@ -66,6 +66,14 @@ const Cart = () => {
                   >
                     −
                   </Button>
+                                    <Button
+                    size="sm"
+                    colorScheme="green"
+                    ml={4}
+                    onClick={() => dispatch(addItemFromCart(item._id))}
+                  >
+                    +
+                  </Button>
                 </Flex>
               </Box>
             ))}
@@ -75,7 +83,7 @@ const Cart = () => {
                 Total:
               </Text>
               <Text fontWeight="bold" fontSize="lg">
-                ₹{total}
+                ₹{Number(total).toFixed(2)}
               </Text>
             </Flex>
 
