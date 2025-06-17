@@ -9,7 +9,7 @@ import {
 	useColorModeValue,
 	useDisclosure,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ProductActions from "./ProductActions";
 import UpdateProductModal from "./UpdateProductModal";
 
@@ -18,6 +18,8 @@ const ProductCard = ({ product, isLoading }) => {
 	const bg = useColorModeValue("white", "gray.800");
 	const [updatedProduct, setUpdatedProduct] = useState(product);
 	const { isOpen, onOpen, onClose } = useDisclosure();
+
+	const imageRef = useRef(); // ✅ image ref
 
 	return (
 		<Box
@@ -32,7 +34,14 @@ const ProductCard = ({ product, isLoading }) => {
 			{isLoading ? (
 				<Skeleton height="200px" />
 			) : (
-				<Image src={product.image} alt={product.name} h={48} w="full" objectFit="cover" />
+				<Image
+					ref={imageRef} // ✅ attach ref
+					src={product.image}
+					alt={product.name}
+					h={48}
+					w="full"
+					objectFit="cover"
+				/>
 			)}
 
 			<Box p={4}>
@@ -55,6 +64,7 @@ const ProductCard = ({ product, isLoading }) => {
 						<ProductActions
 							product={product}
 							onEditClick={onOpen}
+							imageRef={imageRef} // ✅ pass ref
 						/>
 					</>
 				)}
