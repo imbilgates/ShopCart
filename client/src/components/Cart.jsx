@@ -12,7 +12,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import { addItemFromCart, removeItemFromCart, clearCart } from '../slice/cartSlice';
-import emptyCart from '../assets/shopping-cart.png' 
+import emptyCart from '../assets/shopping-cart.png'
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ const Cart = () => {
                     </Text>
                   </Box>
                   <Spacer />
-                  <Text fontWeight="medium">₹{item.quantity * item.price}</Text>
+                  <Text fontWeight="medium">₹{Number(item.quantity * item.price).toFixed(2)}</Text>
                   <Button
                     size="sm"
                     colorScheme="red"
@@ -66,7 +66,7 @@ const Cart = () => {
                   >
                     −
                   </Button>
-                                    <Button
+                  <Button
                     size="sm"
                     colorScheme="green"
                     ml={4}
@@ -87,9 +87,34 @@ const Cart = () => {
               </Text>
             </Flex>
 
-            <Button colorScheme="red" variant="outline" onClick={() => dispatch(clearCart())}>
-              Clear Cart
-            </Button>
+            <Flex
+              justify="space-between"
+              align="center"
+              mt={6}
+              gap={4}
+              flexWrap="wrap"
+            >
+              <Button
+                colorScheme="red"
+                variant="outline"
+                onClick={() => dispatch(clearCart())}
+                flex="1"
+                minW="140px"
+              >
+                Clear Cart
+              </Button>
+
+              <Button
+                colorScheme="blue"
+                variant="solid"
+                flex="1"
+                minW="180px"
+              >
+                Proceed to Checkout
+              </Button>
+            </Flex>
+
+
           </Stack>
         )}
       </Box>

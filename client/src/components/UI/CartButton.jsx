@@ -8,31 +8,39 @@ const CartButton = () => {
   const totalCount = items.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <Link to="/cart">
-      <Box position="relative" display="inline-block">
-        <IconButton
-          icon={<FaCartPlus />}
-          colorScheme="cyan"
-          variant="outline"
-          aria-label="Cart"
-          size="lg"
-        />
-        {totalCount > 0 && (
-          <Badge
-            position="absolute"
-            top="-1"
-            right="-1"
-            bg="red.500"
-            color="white"
-            borderRadius="full"
-            px="2"
-            fontSize="0.8em"
-          >
-            {totalCount}
-          </Badge>
-        )}
-      </Box>
-    </Link>
+    <Box
+      position="fixed"
+      bottom="9"
+      right="9"
+      zIndex="999"
+    >
+      <Link to="/cart">
+        <Box position="relative" display="inline-block">
+          <IconButton
+            icon={<FaCartPlus />}
+            colorScheme="teal"
+            variant="solid"
+            aria-label="Cart"
+            size="lg"
+            shadow="md"
+          />
+          {totalCount > 0 && (
+            <Badge
+              position="absolute"
+              top="-1"
+              right="-1"
+              bg="red.500"
+              color="white"
+              borderRadius="full"
+              px="2"
+              fontSize="0.8em"
+            >
+              {totalCount}
+            </Badge>
+          )}
+        </Box>
+      </Link>
+    </Box>
   );
 };
 
