@@ -16,14 +16,16 @@ const CartButton = () => {
     >
       <Link to="/cart">
         <Box position="relative" display="inline-block">
-          <IconButton
-            icon={<FaCartPlus />}
-            colorScheme="teal"
-            variant="solid"
-            aria-label="Cart"
-            size="lg"
-            shadow="md"
-          />
+<IconButton
+  id="cart-icon"
+  icon={<FaCartPlus />}
+  colorScheme="teal"
+  variant="solid"
+  aria-label="Cart"
+  size="lg"
+  shadow="md"
+/>
+
           {totalCount > 0 && (
             <Badge
               position="absolute"
